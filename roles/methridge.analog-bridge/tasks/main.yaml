@@ -1,0 +1,6 @@
+---
+- name: Analog Bridge Tasks
+  ansible.builtin.include_tasks:
+   file: "{{ item }}"
+  loop:
+   - clone.yaml

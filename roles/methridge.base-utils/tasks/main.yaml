@@ -1,0 +1,11 @@
+---
+- name: Install utility packages
+  become: true
+  ansible.builtin.apt:
+   pkg:
+    - chrony
+    - git
+    - gpg
+    - net-tools
+    - unzip
+    - zip

@@ -1,0 +1,10 @@
+---
+- name: Install packages
+  become: true
+  ansible.builtin.apt:
+   pkg:
+    - lighttpd
+    - logrotate
+    - javascript-common
+    - php-cgi
+    - php-common

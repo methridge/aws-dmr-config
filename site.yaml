@@ -1,0 +1,3 @@
+---
+- name: Include DMR Server Config
+  ansible.builtin.import_playbook: plays/dmr.yaml

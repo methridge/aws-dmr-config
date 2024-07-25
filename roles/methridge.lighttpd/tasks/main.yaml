@@ -1,0 +1,8 @@
+---
+- name: Lighttpd Package Tasks
+  ansible.builtin.include_tasks:
+   file: "{{ item }}"
+  loop:
+   - install_lighttpd.yaml
+   - configure_lighttpd.yaml
+   - start_lighttpd.yaml

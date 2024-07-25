@@ -1,0 +1,5 @@
+---
+- name: Remove useless packages from the cache
+  become: true
+  ansible.builtin.apt:
+   autoclean: true

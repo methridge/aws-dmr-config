@@ -1,0 +1,8 @@
+---
+- name: Clone Analog Bridge Repository
+  become: true
+  ansible.builtin.git:
+    repo: "https://github.com/DVSwitch/Analog_Bridge.git"
+    dest: "/opt/repos/Analog_Bridge"
+    version: "master"
+    update: true

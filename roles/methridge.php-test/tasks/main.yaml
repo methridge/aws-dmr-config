@@ -1,0 +1,18 @@
+---
+- name: Create kris web directory
+  become: true
+  ansible.builtin.file:
+    path: /var/www/html/kris
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: '0755'
+
+- name: Copy test php file
+  become: true
+  ansible.builtin.copy:
+    src: test.php
+    dest: /var/www/html/kris
+    owner: www-data
+    group: www-data
+    mode: '0644'

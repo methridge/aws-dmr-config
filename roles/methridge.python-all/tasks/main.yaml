@@ -1,0 +1,7 @@
+---
+- name: Install Python All and Dev packages
+  become: true
+  ansible.builtin.apt:
+   pkg:
+    - python3-all-dev
+    - python3-all

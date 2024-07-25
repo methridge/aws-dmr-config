@@ -1,0 +1,27 @@
+---
+- name: Copy DVSwtich APT Repo key
+  become: true
+  ansible.builtin.get_url:
+    url: "http://dvswitch.org/DVSwitch_Repository/dvswitch.gpg.key"
+    dest: "/etc/apt/trusted.gpg.d/dvswitch.asc"
+    owner: root
+    group: root
+    mode: '0644'
+- name: Copy DVSwtich APT Repo list
+  become: true
+  ansible.builtin.copy:
+    src: "dvswitch.list"
+    dest: "/etc/apt/sources.list.d/dvswitch.list"
+    owner: root
+    group: root
+    mode: '0644'
+- name: Run the equivalent of "apt-get update" as a separate step
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+- name: Install DVSwitch packages
+  become: true
+  ansible.builtin.apt:
+    pkg:
+      - analog-bridge
+      - mmdvm-bridge

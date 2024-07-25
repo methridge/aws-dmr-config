@@ -1,0 +1,4 @@
+dmr:
+  hosts:
+    aws-dmr-test:
+        ansible_host: aws-dmr-test

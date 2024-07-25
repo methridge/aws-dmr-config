@@ -1,0 +1,7 @@
+---
+- name: Restart mrtg
+  become: true
+  ansible.builtin.service:
+   name: mrtg
+   state: restarted
+   enabled: true

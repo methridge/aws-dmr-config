@@ -1,0 +1,12 @@
+---
+- name: DMR Server Config
+  hosts: dmr
+  roles:
+   - methridge.ping
+   - methridge.apt-upgrade
+   - methridge.base-utils
+   - methridge.lighttpd
+   - methridge.mrtg
+   - methridge.python-all
+   - methridge.php-test
+   - methridge.dvswitch-repo

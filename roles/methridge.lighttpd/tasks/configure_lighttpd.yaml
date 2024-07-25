@@ -1,0 +1,25 @@
+---
+- name: Enable FastCGI
+  become: true
+  ansible.builtin.file:
+    src: /etc/lighttpd/conf-available/10-fastcgi.conf
+    dest: /etc/lighttpd/conf-enabled/10-fastcgi.conf
+    owner: root
+    group: root
+    state: link
+  notify: Restart lighttpd
+- name: Enable FastCGI PHP
+  become: true
+  ansible.builtin.file:
+    src: /etc/lighttpd/conf-available/15-fastcgi-php.conf
+    dest: /etc/lighttpd/conf-enabled/15-fastcgi-php.conf
+    owner: root
+    group: root
+    state: link
+  notify: Restart lighttpd
+- name: Disable Unconfigured sites
+  become: true
+  ansible.builtin.file:
+    path: /etc/lighttpd/conf-enabled/99-unconfigured.conf
+    state: absent
+  notify: Restart lighttpd

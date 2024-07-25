@@ -1,0 +1,6 @@
+---
+- name: Start lighttpd service
+  ansible.builtin.service:
+   name: lighttpd
+   state: started
+   enabled: true

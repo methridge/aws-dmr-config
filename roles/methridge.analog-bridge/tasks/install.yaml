@@ -1,0 +1,59 @@
+---
+- name: Create Analog Bridge Directory
+  become: true
+  ansible.builtin.file:
+   path: "/opt/Analog_Bridge"
+   owner: root
+   group: root
+   mode: 0755
+   state: directory
+- name: Copy Analog Bridge binary
+  become: true
+  ansible.builtin.copy:
+    src: "/opt/repos/Analog_Bridge/bin/Analog_Bridge.amd64"
+    dest: "/opt/Analog_Bridge/Analog_Bridge"
+    remote_src: true
+    owner: root
+    group: root
+    mode: 0755
+- name: Copy Analog Bridge macro file
+  become: true
+  ansible.builtin.copy:
+    src: "/opt/repos/Analog_Bridge/dvsm.macro"
+    dest: "/opt/Analog_Bridge/dvsm.macro"
+    remote_src: true
+    owner: root
+    group: root
+    mode: 0644
+- name: Copy Analog Bridge parrot script file
+  become: true
+  ansible.builtin.copy:
+    src: "/opt/repos/Analog_Bridge/parrot.sh"
+    dest: "/opt/Analog_Bridge/parrot.sh"
+    remote_src: true
+    owner: root
+    group: root
+    mode: 0644
+- name: Copy Analog Bridge Service File
+  become: true
+  ansible.builtin.copy:
+    src: "/opt/repos/Analog_Bridge/systemd/analog_bridge.service"
+    dest: "/lib/systemd/system/analog_bridge.service"
+    remote_src: true
+    owner: root
+    group: root
+    mode: 0644
+- name: Copy Analog Bridge Configuration
+  become: true
+  ansible.builtin.copy:
+    src: "Analog_Bridge.ini"
+    dest: "/opt/Analog_Bridge/Analog_Bridge.ini"
+    owner: root
+    group: root
+    mode: 0644
+- name: Install Analog Bridge Service
+  become: true
+  ansible.builtin.systemd:
+    name: analog_bridge
+    enabled: yes
+    state: started

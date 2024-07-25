@@ -1,0 +1,21 @@
+---
+- name: Install MRTG and related packages
+  become: true
+  ansible.builtin.apt:
+   pkg:
+    - mrtg
+    - rrdtool
+    - snmp
+    - snmpd
+
+- name: Start mrtg service
+  ansible.builtin.service:
+   name: mrtg
+   state: started
+   enabled: true
+
+- name: Start snmpd service
+  ansible.builtin.service:
+   name: snmpd
+   state: started
+   enabled: true
