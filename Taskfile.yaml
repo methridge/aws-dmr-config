@@ -1,0 +1,15 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  CURRENT_DATE:
+    sh: date +"%Y-%m-%dT%H:%M:%S%Z"
+
+tasks:
+  default:
+    cmds:
+      - git add .
+      - git commit -m "{{.CURRENT_DATE}}"
+      - git push
+    silent: true

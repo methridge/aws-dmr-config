@@ -1,5 +1,5 @@
 ---
-- name: Install Python All and Dev packages
+- name: Install Python All and Dev meta packages
   become: true
   ansible.builtin.apt:
    pkg:

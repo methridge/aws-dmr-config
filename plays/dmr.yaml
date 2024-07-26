@@ -6,7 +6,7 @@
    - methridge.apt-upgrade
    - methridge.base-utils
    - methridge.lighttpd
-   - methridge.mrtg
    - methridge.python-all
+   - methridge.mrtg
    - methridge.php-test
-   - methridge.dvswitch-repo
+   - methridge.dvswitch
